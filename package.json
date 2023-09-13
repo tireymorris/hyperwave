@@ -4,7 +4,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.tsx",
-    "prettier": "bunx prettier --write src/"
+    "prettier": "bunx prettier --write src/ test/"
   },
   "dependencies": {
     "@elysiajs/html": "^0.6.5",

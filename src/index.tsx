@@ -4,11 +4,11 @@ import * as elements from "typed-html";
 import {Attributes, CustomElementHandler} from "typed-html"
 
 
-function Layout({ children }: Attributes) {
+function Layout({ children, title }: Attributes) {
   return (
     <html lang="en" class="bg-gray-200">
       <head>
-        <title>Hello World</title>
+        <title>{title}</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://cdn.tailwindcss.com"></script>
@@ -31,7 +31,7 @@ new Elysia()
   .use(html())
   .get("/time", () => <h2>{new Date().toLocaleTimeString()}</h2>)
   .get("/", () => (
-    <Layout>
+    <Layout title="Highlight Interview">
       <sub>I'm here too!</sub>
     </Layout>
   ))

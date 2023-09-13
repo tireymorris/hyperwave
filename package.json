@@ -1,0 +1,17 @@
+{
+  "name": "hyperwave",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.tsx",
+    "prettier": "bunx prettier --write src/"
+  },
+  "dependencies": {
+    "@elysiajs/html": "^0.6.5",
+    "elysia": "latest"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+}

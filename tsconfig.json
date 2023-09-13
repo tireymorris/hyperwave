@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "jsxFactory": "ElysiaJSX",
-    "jsxFragmentFactory": "ElysiaJSX.Fragment",
+    "jsxFactory": "elements.createElement",
     "types": [
       "bun-types"
     ]

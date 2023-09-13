@@ -2,13 +2,14 @@
   "name": "hyperwave",
   "version": "1.0.50",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "bun run test",
     "dev": "bun run --watch src/index.tsx",
     "prettier": "bunx prettier --write src/ test/"
   },
   "dependencies": {
     "@elysiajs/html": "^0.6.5",
-    "elysia": "latest"
+    "elysia": "latest",
+    "typed-html": "^3.0.1"
   },
   "devDependencies": {
     "bun-types": "latest"

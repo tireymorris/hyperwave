@@ -21,6 +21,8 @@ function Layout({ children, title }: Attributes) {
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"
     />
+
+    <script src="https://unpkg.com/htmx.org@1.9.5" />
   </head>
 
   <body>
@@ -62,6 +64,7 @@ function Layout({ children, title }: Attributes) {
 
     <main>
       <section id="preview">
+        <button hx-get="/time">Click me for the time!</button>
         <h2>Preview</h2>
         <p>
           Sed ultricies dolor non ante vulputate hendrerit. Vivamus sit amet suscipit sapien. Nulla

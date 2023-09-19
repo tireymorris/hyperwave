@@ -6,4 +6,4 @@
 
 [PicoCSS](https://picocss.com/) allows us to write semantic HTML that actually looks good.
 
-[HTMX](https://htmx.org/reference/) gives us 99% of the client-side interactivity most apps need.
+[HTMX](https://htmx.org/reference/) and [Hyperscript](https://hyperscript.org/) give us 99% of the client-side interactivity most apps need.

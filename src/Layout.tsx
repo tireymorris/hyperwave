@@ -17,8 +17,13 @@ export default function Layout({ children }: Attributes) {
         <script>htmx.config.globalViewTransitions = true</script>
       </head>
 
-      <body class="bg-blue-100">
-        <main class="bg-blue-100 sm:p-10 p-4 flex flex-col m-auto justify-center gap-8 max-w-5xl">
+      <body class="bg-blue-50">
+        <header class="w-full px-10 py-4 bg-blue-100 border-b-2 border-blue-200 shadow-md">
+          <a href="/">
+            <h1 class="text-2xl font-bold">hyperwave 🌊</h1>
+          </a>
+        </header>
+        <main class="p-10 flex flex-col m-auto justify-center gap-8">
           {children}
         </main>
       </body>

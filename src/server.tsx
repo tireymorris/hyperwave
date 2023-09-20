@@ -12,13 +12,16 @@ app.onError((err, c) => c.html(<Layout>{err}</Layout>));
 
 app.get("/instructions", ({ html }) =>
   html(
-    <div class="text-lg bg-blue-200 rounded-sm p-2">
-      <p>
-        <code>$ bun dev</code>
-        <br />
-        <br />
-        then edit <code>src/index.ts</code> to get started!
-      </p>
+    <div class="text-md bg-blue-100 rounded-md p-8 self-start shadow-sm">
+      <ol class="flex flex-col gap-4">
+        <p>
+          <code>$ bun dev</code>
+        </p>
+        <li>
+          edit <code>src/server.ts</code>
+        </li>
+        <li>profit 🚀</li>
+      </ol>
     </div>,
   ),
 );
@@ -27,14 +30,13 @@ app.get("/", ({ html }) =>
   html(
     <Layout>
       <section class="flex flex-col gap-8">
-        <h1 class="text-4xl">welcome to hyperwave 🌊</h1>
         <div>
           <button
-            class="bg-blue-200 p-4 text-xl font-bold"
+            class="bg-blue-100 p-4 text-sm font-bold rounded-md shadow-sm"
             hx-get="/instructions"
             hx-target="closest div"
           >
-            instructions
+            fetch instructions from <code>/instructions</code>
           </button>
         </div>
         <ul class="flex flex-col gap-3">

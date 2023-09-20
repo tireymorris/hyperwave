@@ -1,6 +1,6 @@
 🚀 everything you need, and nothing you don't. 🌊
 
-Run `bun dev`  and edit `src/index.ts` to get started!
+Run `bun dev`  and edit `src/server.ts` to get started!
 
 [Bun](https://bun.sh/) provides the runtime, test runner, and package manager, and database via [SQLite](https://bun.sh/docs/api/sqlite)
 

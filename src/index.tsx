@@ -1,7 +1,9 @@
-import { Elysia } from "elysia";
-import { html } from "@elysiajs/html";
 import * as elements from "typed-html";
 import { Attributes, CustomElementHandler } from "typed-html";
+import { Hono } from "hono";
+import { logger } from 'hono/logger'
+
+const app = new Hono();
 
 function Layout({ children }: Attributes) {
   return (
@@ -24,27 +26,24 @@ function Layout({ children }: Attributes) {
       </head>
 
       <body>
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
       </body>
     </html>
   );
 }
 
-new Elysia()
-  .use(html())
-  .get("/time", () => <h2>{new Date().toLocaleTimeString()}</h2>)
-  .get("/", () => (
+app.use('*', logger())
+app.get("/", (c) =>
+  c.html(
     <Layout>
       <p>🚀welcome to Hyperwave! 🌊</p>
       <p>
         <a href="https://bun.sh/">Bun</a> provides the runtime, test runner,
-        package manager, and database via
+        package manager, and database via{" "}
         <a href="https://bun.sh/docs/api/sqlite">SQLite</a>
       </p>
       <p>
-        <a href="https://elysiajs.com/">Elysia</a> is a robust web framework
+        <a href="https://hono.dev">Hono</a> is a robust web framework
         with great DX and performance.
       </p>
       <p>
@@ -52,9 +51,12 @@ new Elysia()
         HTML that actually looks good.
       </p>
       <p>
-        <a href="https://htmx.org/reference/">HTMX</a> and <a href="https://hyperscript.org/">Hyperscript</a> give us 99% of the
+        <a href="https://htmx.org/reference/">HTMX</a> and{" "}
+        <a href="https://hyperscript.org/">Hyperscript</a> give us 99% of the
         client-side interactivity most apps need.
       </p>
-    </Layout>
-  ))
-  .listen(process.env.PORT || 4321);
+    </Layout>,
+  ),
+);
+
+export default app;

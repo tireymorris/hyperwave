@@ -2,7 +2,7 @@
 
 [Bun](https://bun.sh/) provides the runtime, test runner, and package manager, and database via [SQLite](https://bun.sh/docs/api/sqlite)
 
-[Elysia](https://elysiajs.com/) is a robust web framework with great DX and performance.
+[Hono](https://hono.dev) is a robust web framework with great DX and performance.
 
 [PicoCSS](https://picocss.com/) allows us to write semantic HTML that actually looks good.
 

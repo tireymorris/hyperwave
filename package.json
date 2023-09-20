@@ -7,8 +7,7 @@
     "prettier": "bunx prettier --write src/ test/"
   },
   "dependencies": {
-    "@elysiajs/html": "^0.6.5",
-    "elysia": "latest",
+    "hono": "^3.6.3",
     "typed-html": "^3.0.1"
   },
   "devDependencies": {

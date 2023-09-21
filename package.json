@@ -3,7 +3,7 @@
   "version": "1.0.50",
   "scripts": {
     "test": "bun run test",
-    "dev": "PORT=4321 bun run --watch src/server.tsx",
+    "dev": "PORT=4321 bun --watch run src/server.tsx",
     "prettier": "bunx prettier --write src/ test/"
   },
   "dependencies": {

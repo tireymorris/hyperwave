@@ -39,33 +39,6 @@ app.get("/", ({ html }) =>
             fetch instructions from <code>/instructions</code>
           </button>
         </div>
-        <ul class="flex flex-col gap-3">
-          <li>
-            <a class="font-bold" href="https://bun.sh/">
-              Bun
-            </a>{" "}
-            provides the runtime, test runner, package manager, and{" "}
-            <a href="https://bun.sh/docs/api/sqlite">SQLite bindings</a>
-          </li>
-          <li>
-            <a class="font-bold" href="https://hono.dev">
-              Hono
-            </a>{" "}
-            is a robust web framework with great DX and performance
-          </li>
-          <li>
-            <a class="font-bold" href="https://tailwindcss.com/">
-              Tailwind
-            </a>{" "}
-            allows us to keep our styles close to our HTML
-          </li>
-          <li>
-            <a class="font-bold" href="https://htmx.org/reference/">
-              HTMX
-            </a>{" "}
-            gives 99% of the client-side interactivity most apps need
-          </li>
-        </ul>
       </section>
     </Layout>,
   ),

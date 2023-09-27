@@ -4,4 +4,4 @@ const db = new Database("db.sqlite", { create: true });
 
 const query = db.query(`select "Hello world" as message`);
 
-console.log(query)
+console.log(query);

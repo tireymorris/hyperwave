@@ -1,3 +1,4 @@
+import * as elements from "typed-html";
 import { Attributes, CustomElementHandler } from "typed-html";
 
 export default function Layout({ children }: Attributes) {

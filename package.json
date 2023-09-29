@@ -3,8 +3,9 @@
   "version": "1.0.50",
   "scripts": {
     "test": "bun run test",
-    "dev": "PORT=4321 bun --watch run src/server.tsx",
-    "prettier": "bunx prettier --write src/ test/"
+    "dev": "bun --watch run src/server.tsx",
+    "prettier": "bunx prettier --write src/ test/",
+    "build": "bun build --compile ./src/server.tsx"
   },
   "dependencies": {
     "hono": "^3.6.3",

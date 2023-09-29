@@ -3,6 +3,7 @@
 
 Run `bun dev`  and edit `src/server.ts` to get started!
 
+To build an executable for your current architecture, run `bun run build` 
 
 ## Philosophy
 
@@ -26,3 +27,4 @@ In this implementation, we utilize HTMX, Tailwind, and Bun's native support for 
 - [Hono](https://hono.dev) is a robust web framework with great DX and performance
 - [Tailwind](https://tailwindcss.com/) allows us to keep our styles close to our HTML
 - [HTMX](https://htmx.org/reference/) gives 99% of the client-side interactivity most apps need
+

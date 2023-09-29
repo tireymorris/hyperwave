@@ -1,7 +1,7 @@
 # Hyperwave 🌊
 ## Truly RESTful full-stack starter kit 
 
-Run `bun dev`  and edit `src/server.ts` to get started!
+Run `bun dev`  , visit port 3000, and edit `src/server.ts` to get started!
 
 To build an executable for your current architecture, run `bun run build` 
 

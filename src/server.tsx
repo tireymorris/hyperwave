@@ -1,5 +1,3 @@
-import * as elements from "typed-html";
-import { Attributes } from "typed-html";
 import { Hono } from "hono";
 import { logger } from "hono/logger";
 import Layout from "./Layout.tsx";

@@ -1,7 +1,4 @@
-import * as elements from "typed-html";
-import { Attributes, CustomElementHandler } from "typed-html";
-
-export default function Layout({ children }: Attributes) {
+export default function Layout({ children }) {
   return (
     <html lang="en" hx-boost="true" hx-swap="outerHTML transition:true">
       <head>

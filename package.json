@@ -8,8 +8,7 @@
     "build": "bun build --compile ./src/server.tsx"
   },
   "dependencies": {
-    "hono": "^3.6.3",
-    "typed-html": "^3.0.1"
+    "hono": "^3.6.3"
   },
   "devDependencies": {
     "bun-types": "latest"

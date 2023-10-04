@@ -1,11 +1,11 @@
 import { Hono } from "hono";
 import { logger } from "hono/logger";
 import Layout from "./Layout.tsx";
-import { serveStatic } from 'hono/bun'
+import { serveStatic } from "hono/bun";
 
 const app = new Hono();
 
-app.use('/styles/*', serveStatic({ root: './public/' }))
+app.use("/styles/*", serveStatic({ root: "./public/" }));
 
 app.use("*", logger());
 
@@ -29,7 +29,7 @@ app.get("/instructions", ({ html }) =>
 
 app.get("/", ({ html }) =>
   html(
-    <Layout>
+    <Layout title="hyperwave">
       <section class="flex flex-col gap-8">
         <div>
           <button

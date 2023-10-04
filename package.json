@@ -3,17 +3,20 @@
   "version": "1.0.50",
   "scripts": {
     "css": "unocss \"src/**/*.tsx\" -o public/styles/uno.css",
+    "css:watch": "unocss \"src/**/*.tsx\" -o public/styles/uno.css --watch",
+    "server:watch": "bun --watch run src/server.tsx",
+    "dev": "concurrently \"bun css:watch\" \"bun server:watch\"",
     "test": "bun run test",
-    "dev": "bun css && bun --watch run src/server.tsx",
     "prettier": "bunx prettier --write src/ test/",
     "build": "bun css && bun build --compile ./src/server.tsx"
   },
   "dependencies": {
-    "@unocss/cli": "^0.56.4",
     "hono": "^3.6.3"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@unocss/cli": "^0.56.5",
+    "bun-types": "latest",
+    "concurrently": "^8.2.1"
   },
-  "module": "src/server.js"
+  "module": "src/server.tsx"
 }

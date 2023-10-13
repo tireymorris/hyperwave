@@ -1,0 +1,459 @@
+[
+  {
+    "name": "Akira Kurosawa",
+    "birthname": "Akira Kurosawa",
+    "birthdate": "1910-03-23",
+    "birthplace": "Tokyo,Japan"
+  },
+  {
+    "name": "Alfred Hitchcock",
+    "birthname": "Alfred Joseph Hitchcock",
+    "birthdate": "1899-08-13",
+    "birthplace": "Leytonstone, Essex, England"
+  },
+  {
+    "name": "Ang Lee",
+    "birthname": "Ang Lee",
+    "birthdate": "1954-10-23",
+    "birthplace": "Pingtung, Taiwan"
+  },
+  {
+    "name": "Anna Boden",
+    "birthname": "Ang Lee",
+    "birthdate": "1979-10-20",
+    "birthplace": "Newton, Massachusetts, USA"
+  },
+  {
+    "name": "Anna Muylaert",
+    "birthname": "Anna Muylaert",
+    "birthdate": "1964-04-21",
+    "birthplace": "São Paulo, São Paulo, Brazil"
+  },
+  {
+    "name": "Anthony Russo",
+    "birthname": "Anthony J. Russo",
+    "birthdate": "1970-02-03",
+    "birthplace": "Cleveland, Ohio, USA"
+  },
+  {
+    "name": "Anurag Kashyap",
+    "birthname": "Anurag Singh Kashyap",
+    "birthdate": "1972-09-10",
+    "birthplace": "Gorakhpur, Uttar Pradesh, India",
+    "First Movie": "Kennedy"
+  },
+  {
+    "name": "Billy Wilder",
+    "birthname": "Samuel Wilder",
+    "birthdate": "1906-06-22",
+    "birthplace": "Sucha, Galicia, Austria-Hungary "
+  },
+  {
+    "name": "Brad Bird",
+    "birthname": "Brad Bird",
+    "birthdate": "1957-09-24",
+    "birthplace": "Kalispell, Montana, USA"
+  },
+  {
+    "name": "Chris Columbus",
+    "birthname": "Chris Joseph Columbus",
+    "birthdate": "1958-09-10",
+    "birthplace": "Spangler, Pennsylvania, USA"
+  },
+  ,
+  {
+    "name": "Clint Eastwood",
+    "birthname": "Clinton Eastwood Jr.",
+    "birthdate": "1930-05-31",
+    "birthplace": "San Francisco, California, U.S."
+  },
+  {
+    "name": "Damien Chazelle",
+    "birthname": "Imtiaz Ali",
+    "birthdate": "1985-01-19",
+    "birthplace": "Providence, Rhode Island, United States"
+  },
+  {
+    "name": "David Fincher",
+    "birthname": "David Andrew Leo Fincher",
+    "birthdate": "1962-08-28",
+    "birthplace": "Denver, Colorado, United States"
+  },
+  {
+    "name": "David Lynch",
+    "birthname": "David Keith Lynch",
+    "birthdate": "1946-01-20",
+    "birthplace": "Missoula, Montana, USA"
+  },
+  {
+    "name": "Denis Villeneuve",
+    "birthname": "Denis Villeneuve",
+    "birthdate": "1967-10-03",
+    "birthplace": "Gentilly, Quebec, Canada"
+  },
+  {
+    "name": "Dibakar Banerjee",
+    "birthname": "Dibakar Banerjee",
+    "birthdate": "1969-06-21",
+    "birthplace": "New Delhi, India"
+  },
+  {
+    "name": "Emir Kusturica",
+    "birthname": "Emir Kusturica",
+    "birthdate": "1954-11-24",
+    "birthplace": "Sarajevo, Yugoslavia"
+  },
+  {
+    "name": "Fernando Meirelles",
+    "birthname": "Fernando Ferreira Meirelles",
+    "birthdate": "1955-11-09",
+    "birthplace": "São Paulo, São Paulo, Brazil"
+  },
+  {
+    "name": "Francis Ford Coppola",
+    "birthname": "Francis Ford Coppola",
+    "birthdate": "1937-04-07",
+    "birthplace": "Detroit, Michigan, United States"
+  },
+  {
+    "name": "Fritz Lang",
+    "birthname": "Friedrich Christian Anton Lang",
+    "birthdate": "1890-12-05",
+    "birthplace": "Vienna, Austria-Hungaria"
+  },
+  {
+    "name": "George Lucas",
+    "birthname": "George Walton Lucas Jr.",
+    "birthdate": "1944-05-14",
+    "birthplace": "Modesto, California, U.S."
+  },
+  {
+    "name": "Gracia Querejeta",
+    "birthname": "Elías Querejeta Gárate",
+    "birthdate": "1962-08-13",
+    "birthplace": "Madrid, Spain"
+  },
+  {
+    "name": "Greg Robbins",
+    "birthname": "Greg Robbins",
+    "birthdate": "1959-07-06",
+    "birthplace": "Los Angeles, California, USA"
+  },
+  {
+    "name": "Greta Gerwig",
+    "birthname": "Greta Celeste Gerwig",
+    "birthdate": "1983-08-04",
+    "birthplace": "Sacramento, California, USA"
+  },
+  {
+    "name": "Guel Arraes",
+    "birthname": "Miguel Arraes de Alencar Filho",
+    "birthdate": "1953-12-12",
+    "birthplace": "Pernambuco, Brazil"
+  },
+  {
+    "name": "Guy Ritchie",
+    "birthname": "Guy Ritchie",
+    "birthdate": "1968-09-10",
+    "birthplace": "Hatfield, Hertfordshire, England"
+  },
+  {
+    "name": "Harmony Korine",
+    "birthname": "Harmony Korine",
+    "birthdate": "1973-01-04",
+    "birthplace": "Bolinas, California, USA"
+  },
+  {
+    "name": "Icíar Bollaín",
+    "birthname": "Icíar Bollaín Pérez-Mínguez",
+    "birthdate": "1970-06-12",
+    "birthplace": "Madrid, Spain"
+  },
+  {
+    "name": "Imtiaz Ali",
+    "birthname": "Imtiaz Ali",
+    "birthdate": "1971-06-16",
+    "birthplace": "Jamshedpur, Jharkhan, India"
+  },
+  {
+    "name": "James Cameron",
+    "birthname": "James Francis Cameron",
+    "birthdate": "1954-08-16",
+    "birthplace": "Kapuskasing, Ontario, Canada"
+  },
+  {
+    "name": "James Whale",
+    "birthname": "James Whale",
+    "birthdate": "1889-07-22",
+    "birthplace": "Dudley, Worcestershire, England"
+  },
+  {
+    "name": "Jason Reitman",
+    "birthname": "Jason Reitmans",
+    "birthdate": "1977-10-09",
+    "birthplace": "Montreal, Quebec, Canada"
+  },
+  {
+    "name": "J. J. Abrams",
+    "birthname": "Jeffrey Jacob Abrams",
+    "birthdate": "1966-06-27",
+    "birthplace": "New York, U.S"
+  },
+  {
+    "name": "Joachim Ronning",
+    "birthname": "Joachim Ronning",
+    "birthdate": "1972-05-30",
+    "birthplace": "Sandefjord, Norway"
+  },
+  {
+    "name": "John Ford",
+    "birthname": "John Martin Feeney",
+    "birthdate": "1894-02-01",
+    "birthplace": "Cape Elizabeth, Maine, United States"
+  },
+  {
+    "name": "Jon Turteltaub",
+    "birthname": "Jonathan Charles Turteltaub",
+    "birthdate": "1963-08-08",
+    "birthplace": "New York City, New York, USA"
+  },
+  {
+    "name": "Joseph Kosinski",
+    "birthname": "Joseph Kosinski",
+    "birthdate": "1974-03-3",
+    "birthplace": "Marshalltown, Iowa, USA"
+  },
+  {
+    "name": "Joseph Russo.",
+    "birthname": "Joseph Vincent Russo",
+    "birthdate": "1971-07-08",
+    "birthplace": "Cleveland, Ohio, USA"
+  },
+  {
+    "name": "Justin Lin",
+    "birthname": "Yi-Bin Lin",
+    "birthdate": "1973-10-11",
+    "birthplace": "Taipei, Taiwan"
+  },
+  {
+    "name": "Karthik Subbaraj",
+    "birthname": "Karthik Subbaraj",
+    "birthdate": "1985-01-01",
+    "birthplace": "Madurai, India"
+  },
+  {
+    "name": "Kleber Mendonça",
+    "birthname": "Kleber de Mendonça Vasconcellos Filho",
+    "birthdate": "1968-11-22",
+    "birthplace": "Recife, Pernambuco"
+  },
+  {
+    "name": "Laís Bodanzky",
+    "birthname": "Laís Bodanzky",
+    "birthdate": "1969-09-23",
+    "birthplace": "São Paulo, Brazil"
+  },
+  {
+    "name": "Lester James Peries",
+    "birthname": "Lester James Peries",
+    "birthdate": "1919-04-05",
+    "birthplace": " Dehiwela, Colombo, Sri Lanka"
+  },
+  {
+    "name": "Luc Besson",
+    "birthname": "Luc Paul Maurice Besson",
+    "birthdate": "1959-03-18",
+    "birthplace": "Paris, France"
+  },
+  {
+    "name": "Mani Ratnam",
+    "birthname": "Gopala Ratnam Subramaniam",
+    "birthdate": "1956-02-06",
+    "birthplace": "Chennai, Tamil Nadu"
+  },
+  {
+    "name": "Martin Scorsese",
+    "birthname": "Martin Charles Scorsese",
+    "birthdate": "1942-11-17",
+    "birthplace": "New York City, New York, USA"
+  },
+  {
+    "name": "Michael Bay",
+    "birthname": "Michael Benjamin Bay",
+    "birthdate": "1965-02-17",
+    "birthplace": "Los Angeles, California, USA"
+  },
+  {
+    "name": "Mike Barker",
+    "birthname": "Mike Barker",
+    "birthdate": "1965-11-29",
+    "birthplace": "England, UK"
+  },
+  {
+    "name": "Mira Nair",
+    "birthname": "Mira Nair",
+    "birthdate": "1957-10-15",
+    "birthplace": "New York City, New York, United States"
+  },
+  {
+    "name": "Orson Welles",
+    "birthname": "George Orson Welles",
+    "birthdate": "1915-05-06",
+    "birthplace": " Kenosha, Wisconsin, USA"
+  },
+  {
+    "name": "Park Chan-wook",
+    "birthdate": "1963-08-23",
+    "birthplace": "Seoul, South Korea"
+  },
+  {
+    "name": "Petra Costa",
+    "birthname": "Ana Petra Andrade Costa",
+    "birthdate": "1983-07-08",
+    "birthplace": " Belo Horizonte, Minas Gerais"
+  },
+  {
+    "name": "Quentin Tarantino",
+    "birthname": "Quentin Jerome Tarantino",
+    "birthdate": "1963-03-27",
+    "birthplace": "Knoxville, Tennessee, U.S."
+  },
+  {
+    "name": "Rajkumar Hirani",
+    "birthname": "Rajkumar Hirani",
+    "birthdate": "1962-11-20",
+    "birthplace": "Nagpur, Maharashtra, India"
+  },
+  {
+    "name": "Ram Gopal Verma",
+    "birthname": "Penmetsa Ram Gopal Varma",
+    "birthdate": "1962-03-07",
+    "birthplace": "Hyderabad, Telangana"
+  },
+  {
+    "name": "Rian Johnson",
+    "birthname": "Rian Johnson",
+    "birthdate": "1973-12-17",
+    "birthplace": "Silver Spring, Maryland, USA"
+  },
+  {
+    "name": "Ric Roman Waugh",
+    "birthname": "Ric Roman Waugh",
+    "birthdate": "1968-02-20",
+    "birthplace": "Los Angeles, California, USA"
+  },
+  {
+    "name": "Ridley Scott",
+    "birthname": "Ridley Scott",
+    "birthdate": "1937-11-30",
+    "birthplace": "South Shields, County Durham, England"
+  },
+  {
+    "name": "Robert Aldrich",
+    "birthname": "Robert Aldrich",
+    "birthdate": "1918-08-09",
+    "birthplace": "Cranston, Rhode Island, USA"
+  },
+  {
+    "name": "Rob Reiner",
+    "birthname": "Robert Reiner",
+    "birthdate": "1947-03-06",
+    "birthplace": "New York, NY, USA"
+  },
+  {
+    "name": "Ryan Fleck",
+    "birthname": "Ryan K. Fleck",
+    "birthdate": "1976-09-20",
+    "birthplace": "Berkeley, California, USA"
+  },
+  {
+    "name": "Sam Newfield",
+    "birthname": "Same Newfield",
+    "birthdate": "1899-12-06",
+    "birthplace": "New York City, New York, USA"
+  },
+  {
+    "name": "Sam Raimi",
+    "birthname": "Sam Raimi",
+    "birthdate": "1959-10-23",
+    "birthplace": "Royal Oak, MI"
+  },
+  {
+    "name": "Satyajit Ray",
+    "birthname": "Satyajit Ray",
+    "birthdate": "1921-05-02",
+    "birthplace": "Calcutta, West Bengal"
+  },
+  {
+    "name": "S. S. Rajamouli",
+    "birthname": "Koduri Srisaila Sri Rajamouli",
+    "birthdate": "1973-10-10",
+    "birthplace": "Raichur, Karnataka, India"
+  },
+  {
+    "name": "Stanley Kubrick",
+    "birthname": "Stanley Kubrick",
+    "birthdate": "1928-07-26",
+    "birthplace": "307 Second Avenue, Manhattan, New York City"
+  },
+  {
+    "name": "Stephen Spielberg",
+    "birthname": "Steven Allan Spielberg",
+    "birthdate": "1946-12-18",
+    "birthplace": "Cincinatti, Ohio, USA"
+  },
+  {
+    "name": "Stephen Lisberger",
+    "birthname": "Stephen Lisberger",
+    "birthdate": "1951-04-24",
+    "birthplace": " New York City, New York, USA"
+  },
+  {
+    "name": "Thor Freudenthal",
+    "birthname": "Thor Freudenthal",
+    "birthdate": "1972-10-20",
+    "birthplace": "Berlin, Germany"
+  },
+  {
+    "name": "Tim Burton",
+    "birthname": "Timothy Walter Burton",
+    "birthdate": "1958-08-25",
+    "birthplace": "Burbank, California, U.S"
+  },
+  {
+    "name": "Tim Miller",
+    "birthname": "Timothy Miller",
+    "birthdate": "1970-02-28",
+    "birthplace": "Fort Washington, Maryland, USA"
+  },
+  {
+    "name": "Todd Phillips",
+    "birthname": "Todd Phillips",
+    "birthdate": "1970-12-20",
+    "birthplace": "Brooklyn, New York, United States"
+  },
+  {
+    "name": "Tom Harper",
+    "birthname": "Tom Harper",
+    "birthdate": "1980-01-07",
+    "birthplace": "London, United Kingdom"
+  },
+  {
+    "name": "Wes Anderson",
+    "birthname": "Wesley Wales Anderson",
+    "birthdate": "1969-05-01",
+    "birthplace": "Houston, Texas, United States"
+  },
+  {
+    "name": "Woody Allen",
+    "birthname": "Allen Stewart Konigsberg",
+    "birthdate": "1935-12-01",
+    "birthplace": "New York, NY, USA"
+  },
+  {
+    "name": "Zack Snyder",
+    "birthname": "Zachary Edward Snyder",
+    "birthdate": "1966-03-01",
+    "birthplace": "Green Bay, Wisconsin, United States"
+  }
+]

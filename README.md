@@ -11,7 +11,7 @@ hyperwave is a server-side framework for building web applications.
 
 ### Setup
 
-`bun install && bun dev`
+`bun setup`
 
 Visit port 3000 and edit `server.tsx`
 

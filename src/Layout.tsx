@@ -19,13 +19,13 @@ export default function Layout({ title, children }) {
         <script>htmx.config.globalViewTransitions = true</script>
       </head>
 
-      <body class="bg-blue-50">
-        <header class="w-full px-10 py-4 bg-blue-100 border-b-2 border-blue-200 shadow-md">
+      <body class="bg-slate-200">
+        <header class="w-full px-10 py-4 bg-slate-400 border-b-2 border-slate-450 shadow-md">
           <a href="/">
             <h1 class="text-2xl font-bold">hyperwave 🌊</h1>
           </a>
         </header>
-        <main class="p-10 flex flex-col m-auto justify-center gap-8">
+        <main class="p-10 flex flex-col justify-center gap-8">
           {children}
         </main>
       </body>

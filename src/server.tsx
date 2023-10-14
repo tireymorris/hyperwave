@@ -1,7 +1,10 @@
 import { Hono } from "hono";
 import { logger } from "hono/logger";
-import Layout from "./Layout.tsx";
 import { serveStatic } from "hono/bun";
+
+import Layout from "./Layout.tsx";
+import MovieCard from "./MovieCard.tsx";
+import CategoryRow from "./CategoryRow.tsx";
 
 const app = new Hono();
 
@@ -11,38 +14,16 @@ app.use("*", logger());
 
 app.onError((err, c) => c.html(<Layout>{err}</Layout>));
 
-app.get("/instructions", ({ html }) =>
-  html(
-    <div class="text-md bg-blue-100 rounded-md p-8 self-start shadow-sm">
-      <ol class="flex flex-col gap-4">
-        <p>
-          <code>$ bun dev</code>
-        </p>
-        <li>
-          edit <code>src/server.ts</code>
-        </li>
-        <li>profit 🚀</li>
-      </ol>
-    </div>,
-  ),
-);
-
-app.get("/", ({ html }) =>
-  html(
+app.get("/", ({ html }) => {
+  return html(
     <Layout title="hyperwave">
       <section class="flex flex-col gap-8">
-        <div>
-          <button
-            class="bg-blue-100 p-4 text-sm font-bold rounded-md shadow-sm"
-            hx-get="/instructions"
-            hx-target="closest div"
-          >
-            fetch instructions from <code>/instructions</code>
-          </button>
-        </div>
+        <CategoryRow offset={0} />
+        <CategoryRow offset={100} />
+        <CategoryRow offset={200} />
       </section>
     </Layout>,
-  ),
-);
+  );
+});
 
 export default app;

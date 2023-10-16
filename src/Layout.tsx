@@ -25,9 +25,7 @@ export default function Layout({ title, children }) {
             <h1 class="text-2xl font-bold">hyperwave 🌊</h1>
           </a>
         </header>
-        <main class="p-10 flex flex-col justify-center gap-8">
-          {children}
-        </main>
+        <main class="p-10 flex flex-col justify-center gap-8">{children}</main>
       </body>
     </html>
   );

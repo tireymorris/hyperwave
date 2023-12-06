@@ -1,18 +1,17 @@
 # hyperwave 🌊
 
-https://hyperwave.codes/
-
 hyperwave is a server-side framework for building web applications.
 
 * fast: Bun and Hono for best-in-class performance
-* lightweight: ~20kb payload. Demo loads in a couple seconds even while throttled to 2G.
+* lightweight: ~20kb payload, loads in < 5 seconds on slow 3G
 * productive: use the best tools for the job: Tailwind, HTMX, and TypeScript
 * portable: compile a binary to deploy anywhere
 
+---
 
 ### Setup
 
-`bun install && bun dev`
+`bun setup`
 
 Visit port 3000 and edit `server.tsx`
 

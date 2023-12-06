@@ -16,6 +16,7 @@ export default function Layout({ title, children }) {
           href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css"
         />
         <link rel="stylesheet" href="/styles/uno.css" />
+        <style>{`* { box-sizing: border-box; margin: 0; outline: none; }`}</style>
         <script>htmx.config.globalViewTransitions = true</script>
       </head>
 

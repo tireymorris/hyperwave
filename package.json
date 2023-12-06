@@ -6,6 +6,8 @@
     "css:watch": "unocss \"src/**/*.tsx\" -o public/styles/uno.css --watch",
     "server:watch": "bun --watch run src/server.tsx",
     "dev": "concurrently \"bun css:watch\" \"bun server:watch\"",
+    "db": "bun run src/db.ts",
+    "setup": "bun install && bun db && bun dev",
     "test": "bun run test",
     "prettier": "bunx prettier --write src/ test/",
     "build": "bun css && bun build --compile ./src/server.tsx"

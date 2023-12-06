@@ -42,3 +42,5 @@ package-lock.json
 **/*.bun
 
 server
+
+*.sqlite

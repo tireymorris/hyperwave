@@ -13,7 +13,7 @@ app.onError((err, c) => c.html(<Layout>{err}</Layout>));
 
 app.get("/instructions", ({ html }) =>
   html(
-    <div class="text-md bg-blue-100 rounded-md p-8 self-start shadow-sm">
+    <div class="text-md self-start rounded-md bg-blue-100 p-8 shadow-sm">
       <ol class="flex flex-col gap-4">
         <p>
           <code>$ bun dev</code>
@@ -33,7 +33,7 @@ app.get("/", ({ html }) =>
       <section class="flex flex-col gap-8">
         <div>
           <button
-            class="bg-blue-100 p-4 text-sm font-bold rounded-md shadow-sm"
+            class="rounded-md bg-blue-100 p-4 text-sm font-bold shadow-sm"
             hx-get="/instructions"
             hx-target="closest div"
           >

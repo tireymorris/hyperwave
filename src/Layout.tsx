@@ -21,12 +21,12 @@ export default function Layout({ title, children }) {
       </head>
 
       <body class="bg-blue-50">
-        <header class="w-full px-10 py-4 bg-blue-100 border-b-2 border-blue-200 shadow-md">
+        <header class="w-full border-b-2 border-blue-200 bg-blue-100 px-10 py-4 shadow-md">
           <a href="/">
             <h1 class="text-2xl font-bold">hyperwave 🌊</h1>
           </a>
         </header>
-        <main class="p-10 flex flex-col m-auto justify-center gap-8">
+        <main class="m-auto flex flex-col justify-center gap-8 p-10">
           {children}
         </main>
       </body>

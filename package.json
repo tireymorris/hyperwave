@@ -9,7 +9,7 @@
     "db": "bun run src/db.ts",
     "setup": "bun install && bun db && bun dev",
     "test": "bun run test",
-    "prettier": "bunx prettier --write src/ test/",
+    "prettier": "bunx prettier --write src/ test/ --plugin prettier-plugin-tailwindcss",
     "build": "bun css && bun build --compile ./src/server.tsx"
   },
   "dependencies": {
@@ -18,7 +18,8 @@
   "devDependencies": {
     "@unocss/cli": "^0.56.5",
     "bun-types": "latest",
-    "concurrently": "^8.2.1"
+    "concurrently": "^8.2.1",
+    "prettier-plugin-tailwindcss": "^0.5.9"
   },
   "module": "src/server.tsx"
 }

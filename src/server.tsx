@@ -1,48 +1,27 @@
 import { Hono } from "hono";
-import { logger } from "hono/logger";
-import Layout from "./Layout.tsx";
 import { serveStatic } from "hono/bun";
+import { logger } from "hono/logger";
+import Layout from "./components/Layout.tsx";
+import PinkButton from "./components/PinkButton.tsx";
+
+import editUserRoutes from "./routes/editUserInfo.tsx";
 
 const app = new Hono();
 
 app.use("/styles/*", serveStatic({ root: "./public/" }));
-
 app.use("*", logger());
 
-app.onError((err, c) => c.html(<Layout>{err}</Layout>));
-
-app.get("/instructions", ({ html }) =>
+app.get("/", (c) => c.redirect("/dashboard"));
+app.get("/dashboard", async ({ html }) =>
   html(
-    <div class="text-md self-start rounded-md bg-blue-100 p-8 shadow-sm">
-      <ol class="flex flex-col gap-4">
-        <p>
-          <code>$ bun dev</code>
-        </p>
-        <li>
-          edit <code>src/server.ts</code>
-        </li>
-        <li>profit 🚀</li>
-      </ol>
-    </div>,
-  ),
-);
-
-app.get("/", ({ html }) =>
-  html(
-    <Layout title="hyperwave">
-      <section class="flex flex-col gap-8">
-        <div>
-          <button
-            class="rounded-md bg-blue-100 p-4 text-sm font-bold shadow-sm"
-            hx-get="/instructions"
-            hx-target="closest div"
-          >
-            fetch instructions from <code>/instructions</code>
-          </button>
-        </div>
-      </section>
+    <Layout title="Hyperwave" currentPath="/dashboard">
+      <PinkButton class="w-40" hx-get="/editUser">
+        Get User Info
+      </PinkButton>
     </Layout>,
   ),
 );
+
+app.route("/editUser", editUserRoutes);
 
 export default app;

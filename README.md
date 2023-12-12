@@ -1,24 +1,26 @@
 # hyperwave 🌊
 
+https://hyperwave.codes/
+
 hyperwave is a server-side framework for building web applications.
 
-* fast: Bun and Hono for best-in-class performance
-* lightweight: ~20kb payload, loads in < 5 seconds on slow 3G
-* productive: use the best tools for the job: Tailwind, HTMX, and TypeScript
-* portable: compile a binary to deploy anywhere
-
----
+- fast: Bun and Hono for best-in-class performance
+- lightweight: ~20kb payload. Demo loads in a couple seconds even while throttled to 2G.
+- productive: use the best tools for the job: Tailwind, HTMX, and TypeScript
+- portable: compile a binary to deploy anywhere
 
 ### Setup
 
-`bun setup`
+`bun install && bun run src/db.ts && bun dev`
 
 Visit port 3000 and edit `server.tsx`
 
 ---
 
 ### Example
+
 This is the endpoint serving our initial landing page:
+
 ```typescript
 app.get("/", ({ html }) =>
   html(
@@ -38,6 +40,7 @@ app.get("/", ({ html }) =>
   ),
 );
 ```
+
 - The API serves a full HTML document to the client, which includes Tailwind classes and HTMX attributes
 - The response is wrapped in a `<Layout />` tag, a server-rendered functional component, which takes a `title` prop
 - The button, when clicked, will issue a `GET` request to `/instructions` and replace the content of its parent div with the response.

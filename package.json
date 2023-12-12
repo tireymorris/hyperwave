@@ -2,23 +2,25 @@
   "name": "hyperwave",
   "version": "1.0.50",
   "scripts": {
+    "build": "bun css && bun build --compile ./src/server.tsx",
     "css": "unocss \"src/**/*.tsx\" -o public/styles/uno.css",
     "css:watch": "unocss \"src/**/*.tsx\" -o public/styles/uno.css --watch",
-    "server:watch": "bun --watch run src/server.tsx",
-    "dev": "concurrently \"bun css:watch\" \"bun server:watch\"",
     "db": "bun run src/db.ts",
-    "setup": "bun install && bun db && bun dev",
-    "test": "bun run test",
+    "dev": "concurrently \"bun css:watch\" \"bun server:watch\"",
     "prettier": "bunx prettier --write src/ test/ --plugin prettier-plugin-tailwindcss",
-    "build": "bun css && bun build --compile ./src/server.tsx"
+    "server:watch": "bun --watch run src/server.tsx",
+    "test": "bun run test"
   },
   "dependencies": {
-    "hono": "^3.6.3"
+    "@unocss/preset-web-fonts": "^0.58.0",
+    "hono": "^3.6.3",
+    "unocss": "^0.58.0"
   },
   "devDependencies": {
     "@unocss/cli": "^0.56.5",
     "bun-types": "latest",
     "concurrently": "^8.2.1",
+    "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.9"
   },
   "module": "src/server.tsx"

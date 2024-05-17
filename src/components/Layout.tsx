@@ -1,14 +1,10 @@
-import Magnify from "../../assets/icons/magnify";
-import Input from "./Input";
-import Nav from "./Nav";
-
 type Props = {
   title: string;
   currentPath?: string;
   children: any;
 };
 
-export default function Layout({ title, children, currentPath }: Props) {
+export default function Layout({ title, children }: Props) {
   return (
     <html lang="en" hx-boost="true" hx-swap="outerHTML transition:true">
       <head>
@@ -27,26 +23,7 @@ export default function Layout({ title, children, currentPath }: Props) {
       </head>
 
       <style>{`* { box-sizing: border-box; margin: 0; outline: none; color: unset; }`}</style>
-
-      <body class="font-lato m-0 bg-blue-50 text-base">
-        <header class="border-b-solid border-b-1 fixed sticky flex w-full gap-4 border-blue-300 bg-blue-200 px-4 py-3 leading-5">
-          <a href="/" class="text-brown-800 text-sm no-underline">
-            <h1>🌊 hyperwave</h1>
-          </a>
-          <div class="relative hidden md:block">
-            <Input class="w-80 bg-white" placeholder="Search ..." />
-            <span class="relative right-8 top-0.5 fill-neutral-500">
-              <Magnify />
-            </span>
-          </div>
-        </header>
-
-        <Nav currentPath={currentPath} />
-
-        <main class="m-auto flex flex-col justify-center gap-8 py-4 pl-20 md:pl-60 md:pr-10">
-          {children}
-        </main>
-      </body>
+      <body class="font-lato m-0 bg-slate-50 p-0 text-base">{children}</body>
     </html>
   );
 }

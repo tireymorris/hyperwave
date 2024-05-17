@@ -7,12 +7,18 @@ hyperwave is a server-side framework for building web applications.
 - ergonomic: best tooling of modern tooling combined with rock solid app architecture
 - portable: compile a binary to deploy anywhere
 
-Choosing hyperwave means embracing a smarter way to develop web applications,
-where ease of use, performance, and developer experience go hand in hand.
+### Motivation
+
+- Drastically reduce time from idea to rendered UI
+- Very little cognitive friction to creating something new, after initial learning curve
+
+### Comparison
+
+![image](https://github.com/tireymorris/hyperwave/assets/3528600/561b5536-5660-469d-b80a-9883f45ab676)
 
 ### Setup
 
-`bun install && bun run src/db.ts && bun dev`
+`bun dev`
 
 Visit port 1234 and edit `server.tsx`
 
@@ -20,7 +26,7 @@ Visit port 1234 and edit `server.tsx`
 
 ### Example
 
-This is the endpoint serving our initial landing page:
+This is the endpoint serving an example landing page:
 
 ```typescript
 app.get("/", ({ html }) =>
@@ -72,24 +78,19 @@ Note: deploy `public/` with the executable, it contains the generated UnoCSS bui
 
 ---
 
-### Benefits and takeways
+### Why switch?
 
-**Why bother switching to hyperwave?**
-
-- Drastically reduces time from idea to rendered UI
-- Very little cognitive friction to creating something new, after initial learning curve
-
-**Speed / performance benefit**
+**Speed and performance**
 
 - hyperwave is designed to generate the smallest possible payloads
-- Deployment is as simple as compiling and running a binary 😎
+- hono generally benchmarks better than any comparable server
 
 **Simplicity**
 
 - Bun saves us a ton of time and effort fighting tooling issues
 - SPAs are over-prescribed and inherently introduce serious costs
 
-**Dev UX benefit**
+**Developer experience**
 
 - Better primitives for quickly building UX
 - Uniform interface simplifies writing and reading code
@@ -97,3 +98,4 @@ Note: deploy `public/` with the executable, it contains the generated UnoCSS bui
 **Architectural benefit**
 
 - Can scale backend and product independently, loosely coupled
+- Deployment is as simple as compiling and running a binary 😎

@@ -7,7 +7,7 @@ export default function Input({ class: className, placeholder, ...rest }) {
         className || ""
       }`}
       autocomplete="off"
-      spellcheck="false"
+      spellcheck={false}
       dir="auto"
       {...rest}
     />

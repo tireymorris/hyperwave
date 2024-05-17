@@ -1,25 +1,26 @@
 {
   "name": "hyperwave",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
-    "build": "bun css && bun build --compile ./src/server.tsx",
-    "css": "unocss \"src/**/*.tsx\" -o public/styles/uno.css",
-    "css:watch": "unocss \"src/**/*.tsx\" -o public/styles/uno.css --watch",
+    "build": "bun build:css && bun build --compile ./src/server.tsx",
+    "build:css": "unocss \"src/**/*.tsx\" -o public/styles/uno.css",
+    "css": "unocss --watch \"src/**/*.tsx\" -o public/styles/uno.css",
     "db": "bun run src/db.ts",
-    "dev": "concurrently \"bun css:watch\" \"bun server:watch\"",
+    "dev": "bun install && concurrently --restart-tries=3 \"bun css\" \"nodemon --watch src --ext ts,tsx --exec 'bun run --hot src/server.tsx'\"",
     "prettier": "bunx prettier --write src/ test/ --plugin prettier-plugin-tailwindcss",
-    "server:watch": "bun --watch run src/server.tsx",
+    "server": "bun run --hot src/server.tsx",
     "test": "bun run test"
   },
   "dependencies": {
     "@unocss/preset-web-fonts": "^0.58.0",
     "hono": "^3.6.3",
+    "nodemon": "^3.1.0",
     "unocss": "^0.58.0",
     "zod": "^3.23.5"
   },
   "devDependencies": {
     "@unocss/cli": "^0.56.5",
-    "bun-types": "latest",
+    "bun-types": "^1.1.8",
     "concurrently": "^8.2.1",
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.9"

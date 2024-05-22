@@ -23,7 +23,7 @@ export default function Layout({ title, children }: Props) {
       </head>
 
       <style>{`* { box-sizing: border-box; margin: 0; outline: none; color: unset; }`}</style>
-      <body class="font-lato m-0 bg-slate-50 p-0 text-base">{children}</body>
+      <body class="font-lato m-0 bg-blue-100 p-0 text-base">{children}</body>
     </html>
   );
 }

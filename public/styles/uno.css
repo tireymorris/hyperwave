@@ -37,10 +37,10 @@
 .rounded-md{border-radius:0.375rem;}
 .border-none{border-style:none;}
 .border-solid{border-style:solid;}
+.bg-blue-100{--un-bg-opacity:1;background-color:rgb(219 234 254 / var(--un-bg-opacity));}
+.bg-blue-200{--un-bg-opacity:1;background-color:rgb(191 219 254 / var(--un-bg-opacity));}
 .bg-blue-300{--un-bg-opacity:1;background-color:rgb(147 197 253 / var(--un-bg-opacity));}
-.bg-slate-100{--un-bg-opacity:1;background-color:rgb(241 245 249 / var(--un-bg-opacity));}
 .bg-slate-200{--un-bg-opacity:1;background-color:rgb(226 232 240 / var(--un-bg-opacity));}
-.bg-slate-50{--un-bg-opacity:1;background-color:rgb(248 250 252 / var(--un-bg-opacity));}
 .bg-transparent{background-color:transparent;}
 .hover\:bg-blue-400:hover{--un-bg-opacity:1;background-color:rgb(96 165 250 / var(--un-bg-opacity));}
 .p-0{padding:0;}

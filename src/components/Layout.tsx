@@ -1,10 +1,10 @@
-type Props = {
+type LayoutProps = {
   title: string;
   currentPath?: string;
   children: any;
 };
 
-export default function Layout({ title, children }: Props) {
+function Layout({ title, children }: LayoutProps) {
   return (
     <html lang="en" hx-boost="true" hx-swap="outerHTML transition:true">
       <head>
@@ -21,9 +21,12 @@ export default function Layout({ title, children }: Props) {
         <script>htmx.config.globalViewTransitions = true</script>
         <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
       </head>
-
       <style>{`* { box-sizing: border-box; margin: 0; outline: none; color: unset; }`}</style>
-      <body class="font-lato m-0 bg-blue-100 p-0 text-base">{children}</body>
+      <body class="font-lato m-0 bg-gradient-to-r from-gray-700 via-gray-900 to-black p-0 text-base text-white">
+        {children}
+      </body>
     </html>
   );
 }
+
+export default Layout;

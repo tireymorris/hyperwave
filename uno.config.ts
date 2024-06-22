@@ -4,7 +4,9 @@ import presetWebFonts from "@unocss/preset-web-fonts";
 export default defineConfig({
   presets: [
     presetAttributify(),
-    presetWind(),
+    presetWind({
+      dark: "class",
+    }),
     presetWebFonts({
       provider: "google",
       fonts: {

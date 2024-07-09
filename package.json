@@ -9,20 +9,21 @@
     "dev": "bun install && concurrently --restart-tries=3 \"bun css\" \"nodemon --watch src --ext ts,tsx --exec 'bun run --hot src/server.tsx'\"",
     "prettier": "bunx prettier --write src/ test/ --plugin prettier-plugin-tailwindcss",
     "server": "bun run --hot src/server.tsx",
-    "test": "bun run test"
+    "test": "bun run test",
+    "update-deps": "bunx npm-check-updates -u && bun install"
   },
   "dependencies": {
-    "@unocss/preset-web-fonts": "^0.61.0",
-    "hono": "^4.4.6",
-    "nodemon": "^3.1.0",
-    "unocss": "^0.61.0",
-    "zod": "^3.23.5"
+    "@unocss/preset-web-fonts": "^0.61.3",
+    "hono": "^4.4.12",
+    "nodemon": "^3.1.4",
+    "unocss": "^0.61.3",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@unocss/cli": "^0.61.0",
-    "bun-types": "^1.1.8",
-    "concurrently": "^8.2.1",
-    "prettier": "^3.1.0",
+    "@unocss/cli": "^0.61.3",
+    "bun-types": "^1.1.18",
+    "concurrently": "^8.2.2",
+    "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5"
   },
   "module": "src/server.tsx"

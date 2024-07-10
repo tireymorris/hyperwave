@@ -1,4 +1,11 @@
-const DEBUG = true;
+const hyperwaveConfig = {
+  debug: true,
+  defaultMethod: "GET",
+  defaultDebounceDelay: 50,
+  defaultLimit: 32,
+  defaultTotalItems: 2048,
+  logPrefix: "hyperwave:",
+};
 
 /**
  * Logs messages to the console if DEBUG is true.
@@ -6,7 +13,8 @@ const DEBUG = true;
  * @param {...any} messages - The messages or data to log.
  */
 const log = (level, ...messages) =>
-  DEBUG && console[level](`hyperwave:`, ...messages);
+  hyperwaveConfig.debug &&
+  console[level](`${hyperwaveConfig.logPrefix}`, ...messages);
 
 /**
  * Creates a debounced function that delays the execution of the provided function.
@@ -29,13 +37,15 @@ const createDebouncedFunction = (func, delay) => {
  * @param {RequestInit} fetchOptions - The options for the fetch request.
  * @returns {Promise<string|null>} - The fetched content as a string or null on error.
  */
-const fetchContent = async (url, fetchOptions) => {
+const fetchContent = async (url, fetchOptions = {}) => {
   try {
     log("log", `Fetching content from ${url}`);
-    const response = await fetch(url, fetchOptions);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    const response = await fetch(url, {
+      method: fetchOptions.method || hyperwaveConfig.defaultMethod,
+      headers: { Accept: "text/html", ...fetchOptions.headers },
+      ...fetchOptions,
+    });
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const content = await response.text();
     log("log", `Content fetched from ${url}`, content.length);
     return content;
@@ -85,9 +95,13 @@ const buildPaginationUrl = (triggerElement, offset, limit) => {
  */
 const handlePagination = (triggerElement, fetchOptions) => {
   let offset = parseInt(triggerElement.getAttribute("offset") || "0", 10);
-  const limit = parseInt(triggerElement.getAttribute("limit") || "10", 10);
+  const limit = parseInt(
+    triggerElement.getAttribute("limit") || hyperwaveConfig.defaultLimit,
+    10,
+  );
   const totalItems = parseInt(
-    triggerElement.getAttribute("data-total") || "999999999",
+    triggerElement.getAttribute("data-total") ||
+      hyperwaveConfig.defaultTotalItems,
     10,
   );
 
@@ -113,10 +127,12 @@ const handlePagination = (triggerElement, fetchOptions) => {
  * @param {HTMLElement} triggerElement - The element to handle the request for.
  */
 const setupEventHandlers = (triggerElement) => {
-  const method = triggerElement.getAttribute("method") || "GET";
+  const method =
+    triggerElement.getAttribute("method") || hyperwaveConfig.defaultMethod;
   const trigger = triggerElement.getAttribute("trigger") || "click";
   const debounceDelay = parseInt(
-    triggerElement.getAttribute("debounce") || "50",
+    triggerElement.getAttribute("debounce") ||
+      hyperwaveConfig.defaultDebounceDelay,
     10,
   );
   const fetchOptions = {
@@ -126,27 +142,21 @@ const setupEventHandlers = (triggerElement) => {
 
   const loadNextPage = handlePagination(triggerElement, fetchOptions);
 
-  if (trigger.includes("DOMContentLoaded")) {
-    loadNextPage();
-  }
+  if (trigger.includes("DOMContentLoaded")) loadNextPage();
 
   if (trigger.includes("scroll")) {
-    // Remove any existing scroll event listener before adding a new one
-    if (triggerElement._hyperwaveScrollHandler) {
+    if (triggerElement._hyperwaveScrollHandler)
       window.removeEventListener(
         "scroll",
         triggerElement._hyperwaveScrollHandler,
       );
-    }
     setupInfiniteScroll(triggerElement, loadNextPage, debounceDelay);
   } else {
-    // Remove any existing event listener before adding a new one
-    if (triggerElement._hyperwaveHandler) {
+    if (triggerElement._hyperwaveHandler)
       triggerElement.removeEventListener(
         trigger,
         triggerElement._hyperwaveHandler,
       );
-    }
 
     const eventHandler = createDebouncedFunction((event) => {
       event.preventDefault();
@@ -202,11 +212,12 @@ const attachHyperwaveHandlers = (rootElement) => {
     const trigger = element.getAttribute("trigger") || "click";
     if (trigger.includes("scroll")) {
       const debounceDelay = parseInt(
-        element.getAttribute("debounce") || "50",
+        element.getAttribute("debounce") ||
+          hyperwaveConfig.defaultDebounceDelay,
         10,
       );
       const loadNextPage = handlePagination(element, {
-        method: element.getAttribute("method") || "GET",
+        method: element.getAttribute("method") || hyperwaveConfig.defaultMethod,
         headers: { Accept: "text/html" },
       });
 

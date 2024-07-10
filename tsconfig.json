@@ -1,11 +1,23 @@
 {
-  "compilerOptions": { 
+  "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "types": [
-      "bun-types"
-    ]
-  }
+    "types": ["bun-types"],
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "target": "ES2021",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "components/*": ["./src/components/*"],
+      "routes/*": ["./src/routes/*"],
+      "models/*": ["./src/models/*"],
+      "util/*": ["./src/util/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "test"]
 }

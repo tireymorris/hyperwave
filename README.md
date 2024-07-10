@@ -1,34 +1,40 @@
 # hyperwave
 
-hyperwave combines the benefits of traditional server-rendered applications with the flexibility of modern client-side frameworks.
+hyperwave combines the strengths of traditional server-rendered applications with the flexibility of modern client-side frameworks. It is designed to deliver fast, responsive applications while providing a streamlined developer experience.
 
-- **Performance:** Server-side rendering ensures fast, responsive applications, tailored to produce the smallest possible bundles.
-- **Developer experience:** HTMX and Tailwind provide a minimalistic and declarative approach to building user interfaces
-- **Deployment:** bun applications can be easily deployed on any platform as portable binaries
+- Performance: Only 200 lines of JS with zero client side dependencies. Works well in 2G network conditions.
+- Developer Experience: tailwind-compatible syntax and html over the wire offer a minimalistic and declarative approach to UI development.
+- Deployment: Bun applications can be deployed easily on any platform as portable binaries.
 
-## Getting started
+```
+$ git clone https://github.com/tireymorris/hyperwave.git
+$ cd hyperwave
+$ bun install
+$ bun dev
+```
 
-Follow these steps to start developing with hyperwave:
+Navigate to http://localhost:1234 in your browser and start editing server.tsx to observe your changes live.
 
-1. Clone the repository:
+remove any of the articles code from the example if you want, it's not many lines. see the server, model files, routes, and db.ts.
 
-   ```sh
-   git clone https://github.com/tireymorris/hyperwave.git
-   cd hyperwave
-   ```
 
-2. Install dependencies:
+## hyperwave.js
 
-   ```sh
-   bun install
-   ```
+dynamically load content on user events, without requiring a page reload.
 
-3. Start the development server:
+attaches automatically to any element with an href attribute (besides an anchor/link tag, which is treated as normal)
 
-   ```sh
-   bun dev
-   ```
+### Usage:
 
-4. Visit `http://localhost:1234` in your browser.
+```
+<div href="/next-page" target="#content"></div>
+```
 
-5. Start editing `server.tsx` to see your changes live.
+- `trigger`: Event that triggers loading (e.g., click, scroll).
+- `method`: HTTP request method (e.g., GET, POST).
+- `debounce`: Delay in milliseconds to optimize performance.
+- `offset, limit, data-total`: Manage pagination settings.
+
+```
+<div href="/next-page" target="#content" trigger="scroll" method="GET" debounce="50" offset="0" limit="10" data-total="100"></div>
+```

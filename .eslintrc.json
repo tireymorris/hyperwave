@@ -1,25 +1,25 @@
 {
-    "parser": "@babel/eslint-parser",
-    "parserOptions": {
-        "ecmaVersion": 2021,
-        "sourceType": "module",
-        "babelOptions": {
-            "presets": [
-                "@babel/preset-env",
-                "@babel/preset-react"
-            ]
-        }
-    },
-    "env": {
-        "browser": true,
-        "node": true
-    },
-    "plugins": [
-        "react"
-    ],
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-    ],
-    "rules": {}
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "babelOptions": {
+      "presets": ["@babel/preset-env", "@babel/preset-react"]
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": "error",
+    "@typescript-eslint/explicit-function-return-type": "error"
+  }
 }
+

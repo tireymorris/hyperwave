@@ -1,12 +1,14 @@
-import EnableDarkMode from "../util/EnableDarkMode";
+import EnableDarkMode from "util/EnableDarkMode";
+import Header from "components/Header";
 
 type LayoutProps = {
   title: string;
   currentPath?: string;
   children: any;
+  lastUpdated?: string | null;
 };
 
-function Layout({ title, children }: LayoutProps) {
+export default function Layout({ title, children, lastUpdated }: LayoutProps) {
   return (
     <html
       lang="en"
@@ -21,18 +23,15 @@ function Layout({ title, children }: LayoutProps) {
           rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>"
         />
-        <script src="https://unpkg.com/htmx.org@1.9.9"></script>
         <link rel="stylesheet" href="/styles/uno.css" />
-        <script>htmx.config.globalViewTransitions = true</script>
-        <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
         <EnableDarkMode />
+        <script src="/scripts/hyperwave.js"></script>
+        <style>{`* { box-sizing: border-box; margin: 0; outline: none; color: unset; }`}</style>
       </head>
-      <style>{`* { box-sizing: border-box; margin: 0; outline: none; color: unset; }`}</style>
-      <body className="font-lato m-0 bg-white dark:bg-gray-900 p-0 text-black dark:text-white">
+      <body className="m-0 bg-white dark:bg-gray-900 p-0 text-black dark:text-white">
+        <Header lastUpdated={lastUpdated} />
         {children}
       </body>
     </html>
   );
 }
-
-export default Layout;

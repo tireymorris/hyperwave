@@ -27,7 +27,7 @@ const createDebouncedFunction = (func, delay) => {
  * Fetches content from the specified URL using the provided options.
  * @param {string} url - The URL to fetch content from.
  * @param {RequestInit} fetchOptions - The options for the fetch request.
- * @returns {Promise<string>} - The fetched content as a string.
+ * @returns {Promise<string|null>} - The fetched content as a string or null on error.
  */
 const fetchContent = async (url, fetchOptions) => {
   try {
@@ -109,7 +109,7 @@ const handlePagination = (triggerElement, fetchOptions) => {
 
 /**
  * Sets up event listeners and handlers based on element attributes.
- * Handles different triggers like click and DOMContentLoaded.
+ * Handles different triggers like click, scroll, and DOMContentLoaded.
  * @param {HTMLElement} triggerElement - The element to handle the request for.
  */
 const setupEventHandlers = (triggerElement) => {
@@ -119,12 +119,6 @@ const setupEventHandlers = (triggerElement) => {
     triggerElement.getAttribute("debounce") || "50",
     10,
   );
-
-  if (!triggerElement.getAttribute("href")) {
-    log("warn", `Missing href for element:`, triggerElement);
-    return;
-  }
-
   const fetchOptions = {
     method: method.toUpperCase(),
     headers: { Accept: "text/html" },
@@ -134,6 +128,17 @@ const setupEventHandlers = (triggerElement) => {
 
   if (trigger.includes("DOMContentLoaded")) {
     loadNextPage();
+  }
+
+  if (trigger.includes("scroll")) {
+    // Remove any existing scroll event listener before adding a new one
+    if (triggerElement._hyperwaveScrollHandler) {
+      window.removeEventListener(
+        "scroll",
+        triggerElement._hyperwaveScrollHandler,
+      );
+    }
+    setupInfiniteScroll(triggerElement, loadNextPage, debounceDelay);
   } else {
     // Remove any existing event listener before adding a new one
     if (triggerElement._hyperwaveHandler) {
@@ -183,9 +188,9 @@ const setupInfiniteScroll = (triggerElement, loadNextPage, debounceDelay) => {
 };
 
 /**
- * Attaches Hyperwave functionality to elements within the specified root element.
+ * Attaches hyperwave functionality to elements within the specified root element.
  * It scans for elements with `href` attribute and sets up the necessary handlers.
- * @param {HTMLElement} rootElement - The root element to search for elements to attach Hyperwave to.
+ * @param {HTMLElement} rootElement - The root element to search for elements to attach hyperwave to.
  */
 const attachHyperwaveHandlers = (rootElement) => {
   const elements = Array.from(rootElement.querySelectorAll("[href]")).filter(
@@ -215,7 +220,7 @@ const attachHyperwaveHandlers = (rootElement) => {
 };
 
 /**
- * Initializes Hyperwave on DOMContentLoaded and sets up a MutationObserver to attach Hyperwave to newly added elements.
+ * Initializes hyperwave on DOMContentLoaded and sets up a MutationObserver to attach hyperwave to newly added elements.
  * Ensures dynamic elements loaded after initial page load are also enhanced.
  */
 document.addEventListener("DOMContentLoaded", () => {

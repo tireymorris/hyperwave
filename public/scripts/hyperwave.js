@@ -7,22 +7,13 @@ const hyperwaveConfig = {
   logPrefix: "hyperwave:",
 };
 
-/**
- * Logs messages to the console if DEBUG is true.
- * @param {string} level - The level of logging (e.g., 'log', 'warn', 'error').
- * @param {...any} messages - The messages or data to log.
- */
-const log = (level, ...messages) =>
-  hyperwaveConfig.debug &&
-  console[level](`${hyperwaveConfig.logPrefix}`, ...messages);
+// Utility functions
+const log = (level, ...messages) => {
+  if (hyperwaveConfig.debug) {
+    console[level](`${hyperwaveConfig.logPrefix}`, ...messages);
+  }
+};
 
-/**
- * Creates a debounced function that delays the execution of the provided function.
- * Useful to limit the rate at which a function is invoked.
- * @param {Function} func - The function to debounce.
- * @param {number} delay - The number of milliseconds to delay.
- * @returns {Function} - The debounced function.
- */
 const createDebouncedFunction = (func, delay) => {
   let timeoutId;
   return (...args) => {
@@ -31,15 +22,9 @@ const createDebouncedFunction = (func, delay) => {
   };
 };
 
-/**
- * Fetches content from the specified URL using the provided options.
- * @param {string} url - The URL to fetch content from.
- * @param {RequestInit} fetchOptions - The options for the fetch request.
- * @returns {Promise<string|null>} - The fetched content as a string or null on error.
- */
+// Content functions
 const fetchContent = async (url, fetchOptions = {}) => {
   try {
-    log("log", `Fetching content from ${url}`);
     const response = await fetch(url, {
       method: fetchOptions.method || hyperwaveConfig.defaultMethod,
       headers: { Accept: "text/html", ...fetchOptions.headers },
@@ -55,28 +40,16 @@ const fetchContent = async (url, fetchOptions = {}) => {
   }
 };
 
-/**
- * Updates the target element with the provided content.
- * @param {HTMLElement} targetElement - The element to update.
- * @param {string} content - The new content to append to the target element.
- */
 const updateTargetElement = (targetElement, content) => {
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = content;
   while (tempDiv.firstChild) {
     targetElement.appendChild(tempDiv.firstChild);
   }
-  log("log", `Content appended to target element`);
   attachHyperwaveHandlers(targetElement);
 };
 
-/**
- * Builds the URL for the next page to load, used for pagination.
- * @param {HTMLElement} triggerElement - The element that triggers pagination.
- * @param {number} offset - The current offset.
- * @param {number} limit - The number of items per page.
- * @returns {string} - The URL for the next page.
- */
+// Pagination functions
 const buildPaginationUrl = (triggerElement, offset, limit) => {
   const url = new URL(
     triggerElement.getAttribute("href"),
@@ -87,12 +60,6 @@ const buildPaginationUrl = (triggerElement, offset, limit) => {
   return url.toString();
 };
 
-/**
- * Handles pagination for loading additional content.
- * @param {HTMLElement} triggerElement - The element that triggers pagination.
- * @param {RequestInit} fetchOptions - The options for the fetch request.
- * @returns {Function} - The function to load the next page of content.
- */
 const handlePagination = (triggerElement, fetchOptions) => {
   let offset = parseInt(triggerElement.getAttribute("offset") || "0", 10);
   const limit = parseInt(
@@ -105,9 +72,14 @@ const handlePagination = (triggerElement, fetchOptions) => {
     10,
   );
 
-  return async () => {
-    if (offset >= totalItems) return;
+  let isFetching = false;
 
+  return async () => {
+    if (isFetching || offset >= totalItems) {
+      return;
+    }
+
+    isFetching = true;
     const url = buildPaginationUrl(triggerElement, offset, limit);
     const content = await fetchContent(url, fetchOptions);
     if (content) {
@@ -117,15 +89,13 @@ const handlePagination = (triggerElement, fetchOptions) => {
       );
       offset += limit;
       triggerElement.setAttribute("offset", offset);
+      log("log", `Content appended. New offset set: ${offset}`);
     }
+    isFetching = false;
   };
 };
 
-/**
- * Sets up event listeners and handlers based on element attributes.
- * Handles different triggers like click, scroll, and DOMContentLoaded.
- * @param {HTMLElement} triggerElement - The element to handle the request for.
- */
+// Event handlers
 const setupEventHandlers = (triggerElement) => {
   const method =
     triggerElement.getAttribute("method") || hyperwaveConfig.defaultMethod;
@@ -135,112 +105,67 @@ const setupEventHandlers = (triggerElement) => {
       hyperwaveConfig.defaultDebounceDelay,
     10,
   );
+  const scrollThreshold = parseInt(
+    triggerElement.getAttribute("data-scroll-threshold") || "300",
+    10,
+  );
   const fetchOptions = {
     method: method.toUpperCase(),
     headers: { Accept: "text/html" },
   };
 
+  log(
+    "log",
+    `Setting up event handlers: method=${method}, trigger=${trigger}, debounceDelay=${debounceDelay}, scrollThreshold=${scrollThreshold}`,
+  );
+
   const loadNextPage = handlePagination(triggerElement, fetchOptions);
 
-  if (trigger.includes("DOMContentLoaded")) loadNextPage();
-
-  if (trigger.includes("scroll")) {
-    if (triggerElement._hyperwaveScrollHandler)
-      window.removeEventListener(
-        "scroll",
-        triggerElement._hyperwaveScrollHandler,
-      );
-    setupInfiniteScroll(triggerElement, loadNextPage, debounceDelay);
-  } else {
-    if (triggerElement._hyperwaveHandler)
-      triggerElement.removeEventListener(
-        trigger,
-        triggerElement._hyperwaveHandler,
-      );
-
-    const eventHandler = createDebouncedFunction((event) => {
+  const eventHandler = createDebouncedFunction(async (event) => {
+    if (trigger !== "scroll") {
       event.preventDefault();
-      loadNextPage();
-    }, debounceDelay);
+    }
+    if (trigger === "scroll") {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const nearBottom =
+        document.body.offsetHeight - scrollPosition <= scrollThreshold;
+      if (!nearBottom) return;
+    }
+    await loadNextPage();
+  }, debounceDelay);
 
-    triggerElement.addEventListener(trigger, eventHandler);
+  if (trigger === "DOMContentLoaded") {
+    loadNextPage();
+  } else {
+    const targetElement = trigger === "scroll" ? window : triggerElement;
+    targetElement.addEventListener(trigger, eventHandler);
     triggerElement._hyperwaveHandler = eventHandler;
+
+    if (trigger === "scroll") {
+      loadNextPage();
+    }
   }
 };
 
-/**
- * Handles infinite scrolling to load more content as the user scrolls near the bottom of the page.
- * @param {HTMLElement} triggerElement - The element that triggers infinite scroll.
- * @param {Function} loadNextPage - The function to load the next page of content.
- * @param {number} debounceDelay - The debounce time in milliseconds for the scroll event.
- */
-const setupInfiniteScroll = (triggerElement, loadNextPage, debounceDelay) => {
-  let isLoading = false;
-  const threshold = 200; // Pixels from the bottom to trigger loading
-
-  const onScroll = createDebouncedFunction(async () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const clientHeight = window.innerHeight;
-    const scrollHeight = document.documentElement.scrollHeight;
-
-    if (scrollTop + clientHeight >= scrollHeight - threshold && !isLoading) {
-      isLoading = true;
-      await loadNextPage();
-      isLoading = false;
-    }
-  }, debounceDelay);
-
-  window.addEventListener("scroll", onScroll);
-  loadNextPage(); // Load initial content if needed
-
-  // Store the event handler to remove it later if needed
-  triggerElement._hyperwaveScrollHandler = onScroll;
-};
-
-/**
- * Attaches hyperwave functionality to elements within the specified root element.
- * It scans for elements with `href` attribute and sets up the necessary handlers.
- * @param {HTMLElement} rootElement - The root element to search for elements to attach hyperwave to.
- */
+// Initialization
 const attachHyperwaveHandlers = (rootElement) => {
   const elements = Array.from(rootElement.querySelectorAll("[href]")).filter(
     (element) => !["A", "LINK"].includes(element.tagName),
   );
   elements.forEach((element) => {
     setupEventHandlers(element);
-
-    const trigger = element.getAttribute("trigger") || "click";
-    if (trigger.includes("scroll")) {
-      const debounceDelay = parseInt(
-        element.getAttribute("debounce") ||
-          hyperwaveConfig.defaultDebounceDelay,
-        10,
-      );
-      const loadNextPage = handlePagination(element, {
-        method: element.getAttribute("method") || hyperwaveConfig.defaultMethod,
-        headers: { Accept: "text/html" },
-      });
-
-      // Remove any existing scroll event listener before adding a new one
-      if (element._hyperwaveScrollHandler) {
-        window.removeEventListener("scroll", element._hyperwaveScrollHandler);
-      }
-      setupInfiniteScroll(element, loadNextPage, debounceDelay);
-    }
   });
 };
 
-/**
- * Initializes hyperwave on DOMContentLoaded and sets up a MutationObserver to attach hyperwave to newly added elements.
- * Ensures dynamic elements loaded after initial page load are also enhanced.
- */
 document.addEventListener("DOMContentLoaded", () => {
+  log("log", "DOMContentLoaded event triggered");
   attachHyperwaveHandlers(document);
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       mutation.addedNodes.forEach((node) => {
         if (node.nodeType === Node.ELEMENT_NODE) {
+          log("log", "MutationObserver detected new element:", node);
           attachHyperwaveHandlers(node);
         }
       });
@@ -248,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   observer.observe(document.body, {
-    childList: true, // Monitor for additions or removals of child elements
-    subtree: true, // Monitor the entire subtree, not just immediate children
+    childList: true,
+    subtree: true,
   });
 });

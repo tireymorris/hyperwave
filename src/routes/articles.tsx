@@ -8,7 +8,7 @@ export default function articlesRoutes(app: Hono) {
     debug("GET /articles - Start");
 
     const offset = parseInt(c.req.query("offset") || "0", 10);
-    const limit = parseInt(c.req.query("limit") || "15", 10);
+    const limit = parseInt(c.req.query("limit") || "32", 10);
 
     debug("Offset:", offset);
     debug("Limit:", limit);

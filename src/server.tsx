@@ -19,7 +19,7 @@ app.get("/", async (c) => {
     ? formatRelativeTime(lastUpdatedDate)
     : null;
 
-  const firstPageArticles = getCachedArticles();
+  const firstPageArticles = getCachedArticles(0, 64);
 
   return c.html(
     <Layout title="hyperwave" lastUpdated={lastUpdated}>
@@ -31,8 +31,8 @@ app.get("/", async (c) => {
           href="/articles"
           trigger="scroll"
           debounce="1"
-          offset="32"
-          limit="32"
+          offset="64"
+          limit="64"
           target="#articles"
           class="w-full"
           data-total="1000"

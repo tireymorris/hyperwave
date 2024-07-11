@@ -1,3 +1,4 @@
+// Configuration
 const hyperwaveConfig = {
   debug: true,
   defaultMethod: "GET",
@@ -24,12 +25,14 @@ const createDebouncedFunction = (func, delay) => {
 
 // Content functions
 const fetchContent = async (url, fetchOptions = {}) => {
+  const options = {
+    method: fetchOptions.method || hyperwaveConfig.defaultMethod,
+    headers: { Accept: "text/html", ...fetchOptions.headers },
+    ...fetchOptions,
+  };
+
   try {
-    const response = await fetch(url, {
-      method: fetchOptions.method || hyperwaveConfig.defaultMethod,
-      headers: { Accept: "text/html", ...fetchOptions.headers },
-      ...fetchOptions,
-    });
+    const response = await fetch(url, options);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     const content = await response.text();
     log("log", `Content fetched from ${url}`, content.length);
@@ -75,18 +78,16 @@ const handlePagination = (triggerElement, fetchOptions) => {
   let isFetching = false;
 
   return async () => {
-    if (isFetching || offset >= totalItems) {
-      return;
-    }
+    if (isFetching || offset >= totalItems) return;
 
     isFetching = true;
     const url = buildPaginationUrl(triggerElement, offset, limit);
     const content = await fetchContent(url, fetchOptions);
     if (content) {
-      updateTargetElement(
-        document.querySelector(triggerElement.getAttribute("target")),
-        content,
+      const target = document.querySelector(
+        triggerElement.getAttribute("target"),
       );
+      updateTargetElement(target, content);
       offset += limit;
       triggerElement.setAttribute("offset", offset);
       log("log", `Content appended. New offset set: ${offset}`);
@@ -109,6 +110,7 @@ const setupEventHandlers = (triggerElement) => {
     triggerElement.getAttribute("data-scroll-threshold") || "300",
     10,
   );
+
   const fetchOptions = {
     method: method.toUpperCase(),
     headers: { Accept: "text/html" },
@@ -122,15 +124,15 @@ const setupEventHandlers = (triggerElement) => {
   const loadNextPage = handlePagination(triggerElement, fetchOptions);
 
   const eventHandler = createDebouncedFunction(async (event) => {
-    if (trigger !== "scroll") {
-      event.preventDefault();
-    }
+    if (trigger !== "scroll") event.preventDefault();
+
     if (trigger === "scroll") {
-      const scrollPosition = window.innerHeight + window.scrollY;
       const nearBottom =
-        document.body.offsetHeight - scrollPosition <= scrollThreshold;
+        document.body.offsetHeight - (window.innerHeight + window.scrollY) <=
+        scrollThreshold;
       if (!nearBottom) return;
     }
+
     await loadNextPage();
   }, debounceDelay);
 
@@ -152,9 +154,7 @@ const attachHyperwaveHandlers = (rootElement) => {
   const elements = Array.from(rootElement.querySelectorAll("[href]")).filter(
     (element) => !["A", "LINK"].includes(element.tagName),
   );
-  elements.forEach((element) => {
-    setupEventHandlers(element);
-  });
+  elements.forEach((element) => setupEventHandlers(element));
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -172,8 +172,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true,
-  });
+  observer.observe(document.body, { childList: true, subtree: true });
 });

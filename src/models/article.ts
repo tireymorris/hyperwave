@@ -71,7 +71,10 @@ export const insertArticle = (article: Article): boolean => {
   }
 };
 
-export const getCachedArticles = (offset: number, limit: number): Article[] => {
+export const getCachedArticles = (
+  offset: number = 0,
+  limit: number = 32,
+): Article[] => {
   debug(`Getting cached articles with offset: ${offset}, limit: ${limit}`);
 
   const query = `

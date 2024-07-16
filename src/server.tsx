@@ -9,10 +9,17 @@ import Articles from "components/Articles";
 
 const app = new Hono();
 
+// Middleware to set Cache-Control headers for all responses
+app.use("*", (c, next) => {
+  c.res.headers.set("Cache-Control", "public, max-age=60"); // Cache for 1 minute
+  return next();
+});
+
 app.use("/styles/*", serveStatic({ root: "./public/" }));
 app.use("/scripts/*", serveStatic({ root: "./public/" }));
 app.use("*", logger());
 
+// Render first page of articles, with infinite scroll if JS is enabled
 app.get("/", async (c) => {
   const lastUpdatedDate = getLastUpdatedTimestamp();
   const lastUpdated = lastUpdatedDate

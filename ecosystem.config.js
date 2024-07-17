@@ -7,12 +7,5 @@ module.exports = {
         NODE_ENV: "production",
       },
     },
-    {
-      name: "hyperwave-worker",
-      script: "./dist/worker",
-      env: {
-        NODE_ENV: "production",
-      },
-    },
   ],
 };

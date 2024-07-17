@@ -1,4 +1,5 @@
-import { formatRelativeTime, getLastUpdatedTimestamp } from "util/time.ts";
+import { getLastUpdatedTimestamp } from "models/article";
+import { formatRelativeTime } from "util/time.ts";
 
 export default async function Header() {
   const lastUpdatedDate = getLastUpdatedTimestamp();

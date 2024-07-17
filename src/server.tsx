@@ -3,8 +3,8 @@ import { Hono } from "hono";
 import { logger } from "hono/logger";
 import { serveStatic } from "hono/bun";
 import articlesRoutes from "routes/articles";
-import { formatRelativeTime, getLastUpdatedTimestamp } from "util/time";
-import { getCachedArticles } from "models/article";
+import { formatRelativeTime } from "util/time";
+import { getCachedArticles, getLastUpdatedTimestamp } from "models/article";
 import Articles from "components/Articles";
 
 const app = new Hono();

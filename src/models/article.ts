@@ -140,3 +140,11 @@ export const insertArticles = (articles: Article[]) => {
   log(`*** Inserting ${articles.length} articles into the database`);
   articles.forEach(insertArticle);
 };
+
+export const getLastUpdatedTimestamp = (): Date | null => {
+  const result = db
+    .prepare("SELECT created_at FROM articles ORDER BY created_at DESC LIMIT 1")
+    .get() as { created_at: string } | undefined;
+
+  return result ? new Date(result.created_at) : null;
+};

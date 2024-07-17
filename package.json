@@ -2,7 +2,7 @@
   "name": "hyperwave",
   "version": "0.2.1",
   "scripts": {
-    "build": "bun build:css && bun build:server && bun build:worker && build:hyperwavejs",
+    "build": "bun build:css && bun build:server && bun build:worker && bun build:hyperwavejs",
     "build:css": "unocss \"src/**/*.tsx\" -o public/styles/uno.css",
     "build:server": "bun build --compile ./src/server.tsx --outfile ./dist/server",
     "build:worker": "bun build --compile ./src/worker.ts --outfile ./dist/worker",

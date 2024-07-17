@@ -1,4 +1,5 @@
 import EnableDarkMode from "util/EnableDarkMode";
+import Header from "components/Header";
 
 type LayoutProps = {
   title: string;
@@ -7,7 +8,7 @@ type LayoutProps = {
   lastUpdated?: string | null;
 };
 
-export default function Layout({ title, children }: LayoutProps) {
+export default function Layout({ title, children, lastUpdated }: LayoutProps) {
   return (
     <html
       lang="en"
@@ -27,7 +28,8 @@ export default function Layout({ title, children }: LayoutProps) {
         <script src="/scripts/hyperwave.js"></script>
         <style>{`* { box-sizing: border-box; margin: 0; outline: none; color: unset; }`}</style>
       </head>
-      <body className="m-0 bg-slate-300 dark:bg-gray-900 p-0 text-black dark:text-white">
+      <body className="m-0 bg-white dark:bg-gray-900 p-0 text-black dark:text-white">
+        <Header lastUpdated={lastUpdated} />
         {children}
       </body>
     </html>

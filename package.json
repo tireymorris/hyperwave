@@ -2,12 +2,13 @@
   "name": "hyperwave",
   "version": "0.2.1",
   "scripts": {
-    "build": "bun build:css && bun build:server",
+    "build": "bun build:css && bun build:server && bun build:worker",
     "build:css": "unocss \"src/**/*.tsx\" -o public/styles/uno.css",
     "build:server": "bun build --compile ./src/server.tsx --outfile ./dist/server",
+    "build:worker": "bun build --compile ./src/worker.ts --outfile ./dist/worker",
     "css:watch": "unocss --watch \"src/**/*.tsx\" -o public/styles/uno.css",
     "db": "bun run src/db.ts",
-    "dev": "bun install && DEBUG=true concurrently --restart-tries=3 \"bun css:watch\" \"bun server:watch\"",
+    "dev": "bun install && DEBUG=true concurrently --restart-tries=3 \"bun css:watch\" \"bun server:watch\" \"bun worker\"",
     "prettier": "bunx prettier --write src/ test/ --plugin prettier-plugin-tailwindcss",
     "server:watch": "nodemon --watch src --ext ts,tsx --exec 'bun run --hot src/server.tsx'",
     "start": "bun run build && pm2 start; pm2 reload all --update-env",
@@ -15,7 +16,8 @@
     "stop": "pm2 kill",
     "server": "bun run --hot src/server.tsx",
     "test": "NODE_ENV=test bun run test",
-    "update-deps": "bunx npm-check-updates -u && bun install"
+    "update-deps": "bunx npm-check-updates -u && bun install",
+    "worker": "bun run src/worker.ts"
   },
   "dependencies": {
     "@unocss/preset-web-fonts": "^0.61.3",

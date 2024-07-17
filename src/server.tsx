@@ -42,7 +42,7 @@ app.get("/", async (c) => {
           limit="64"
           target="#articles"
           class="w-full"
-          data-total="1000"
+          update-mode="append"
         ></div>
       </div>
     </Layout>,

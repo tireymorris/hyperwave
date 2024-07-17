@@ -17,7 +17,6 @@ Navigate to http://localhost:1234 in your browser and start editing server.tsx t
 
 remove any of the articles code from the example if you want, it's not many lines. see the server, model files, routes, and db.ts.
 
-
 ## hyperwave.js
 
 dynamically load content on user events, without requiring a page reload.
@@ -33,8 +32,9 @@ attaches automatically to any element with an href attribute (besides an anchor/
 - `trigger`: Event that triggers loading (e.g., click, scroll).
 - `method`: HTTP request method (e.g., GET, POST).
 - `debounce`: Delay in milliseconds to optimize performance.
-- `offset, limit, data-total`: Manage pagination settings.
+- `offset, limit, total`: Manage pagination settings.
+- `update-mode`: How to update content, either replace (default) or append.
 
 ```
-<div href="/next-page" target="#content" trigger="scroll" method="GET" debounce="50" offset="0" limit="10" data-total="100"></div>
+<div href="/next-page" target="#content" trigger="scroll" method="GET" debounce="50" offset="0" limit="10" total="100"></div>
 ```

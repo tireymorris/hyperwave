@@ -72,15 +72,20 @@ const fetchContent = async (url, fetchOptions = {}) => {
 };
 
 /**
- * Appends new content to a target element, preserving existing content.
+ * Updates a target element with new content, either replacing or appending based on mode.
  * @param {HTMLElement} targetElement - The element to update with new content.
- * @param {string} content - The HTML content to append.
+ * @param {string} content - The HTML content to update.
+ * @param {string} mode - The mode of updating, either "replace" or "append".
  */
-const updateTargetElement = (targetElement, content) => {
-  const tempDiv = document.createElement("div");
-  tempDiv.innerHTML = content;
-  while (tempDiv.firstChild) {
-    targetElement.appendChild(tempDiv.firstChild);
+const updateTargetElement = (targetElement, content, mode = "replace") => {
+  if (mode === "replace") {
+    targetElement.innerHTML = content;
+  } else if (mode === "append") {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = content;
+    while (tempDiv.firstChild) {
+      targetElement.appendChild(tempDiv.firstChild);
+    }
   }
   attachHyperwaveHandlers(targetElement);
 };
@@ -115,10 +120,10 @@ const handlePagination = (triggerElement, fetchOptions) => {
     10,
   );
   const totalItems = parseInt(
-    triggerElement.getAttribute("data-total") ||
-      hyperwaveConfig.defaultTotalItems,
+    triggerElement.getAttribute("total") || hyperwaveConfig.defaultTotalItems,
     10,
   );
+  const mode = triggerElement.getAttribute("update-mode") || "replace";
 
   let isFetching = false;
 
@@ -132,10 +137,10 @@ const handlePagination = (triggerElement, fetchOptions) => {
       const target = document.querySelector(
         triggerElement.getAttribute("target"),
       );
-      updateTargetElement(target, content);
+      updateTargetElement(target, content, mode);
       offset += limit;
       triggerElement.setAttribute("offset", offset);
-      log("log", `Content appended. New offset set: ${offset}`);
+      log("log", `Content updated. New offset set: ${offset}`);
     }
     isFetching = false;
   };
@@ -155,7 +160,7 @@ const setupEventHandlers = (triggerElement) => {
     10,
   );
   const scrollThreshold = parseInt(
-    triggerElement.getAttribute("data-scroll-threshold") || "300",
+    triggerElement.getAttribute("scroll-threshold") || "300",
     10,
   );
 

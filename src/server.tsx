@@ -6,7 +6,6 @@ import Layout from "./components/Layout.tsx";
 const app = new Hono();
 
 app.use("/styles/*", serveStatic({ root: "./public/" }));
-app.use("/scripts/*", serveStatic({ root: "./public/" }));
 app.use("*", logger());
 
 app.get("/", (c) =>

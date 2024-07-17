@@ -10,12 +10,12 @@ export default function Articles(props: { articles: Article[] }) {
       {props.articles.map((article) => (
         <div
           key={article.id}
-          className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1"
+          className="bg-sky-100 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1 border-l-4 border-blue-500 dark:border-none"
         >
-          <div className="p-4">
+          <div className="p-3">
             <a
               href={article.link}
-              className="text-lg font-semibold text-blue-600 hover:text-blue-800 visited:text-purple-600 dark:text-blue-400 dark:hover:text-blue-600 dark:visited:text-purple-400 transition-colors duration-300"
+              className="tracking-wider leading-relaxed text-md font-semibold text-sky-700 hover:text-blue-800 visited:text-purple-600 dark:text-blue-400 dark:hover:text-blue-600 dark:visited:text-purple-400 transition-colors duration-300"
               target="_blank"
               rel="noopener noreferrer"
             >

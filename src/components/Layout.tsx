@@ -12,7 +12,7 @@ export default function Layout({ title, children, lastUpdated }: LayoutProps) {
   return (
     <html
       lang="en"
-      className="dark:bg-gray-900 bg-white dark:text-white text-black"
+      className="dark:bg-gray-900 bg-slate-100 dark:text-white text-black"
     >
       <head>
         <meta charSet="utf-8" />
@@ -28,7 +28,7 @@ export default function Layout({ title, children, lastUpdated }: LayoutProps) {
         <script src="/scripts/hyperwave.js"></script>
         <style>{`* { box-sizing: border-box; margin: 0; outline: none; color: unset; }`}</style>
       </head>
-      <body className="m-0 bg-white dark:bg-gray-900 p-0 text-black dark:text-white">
+      <body className="m-0 bg-slate-100 dark:bg-gray-900 p-0 text-black dark:text-white">
         <Header lastUpdated={lastUpdated} />
         {children}
       </body>

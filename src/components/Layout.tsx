@@ -10,7 +10,7 @@ function Layout({ title, children }: LayoutProps) {
   return (
     <html
       lang="en"
-      className="dark:bg-gray-900 bg-white dark:text-white text-black"
+      className="bg-white text-black dark:bg-gray-900 dark:text-white"
     >
       <head>
         <meta charSet="utf-8" />
@@ -28,7 +28,7 @@ function Layout({ title, children }: LayoutProps) {
         <EnableDarkMode />
       </head>
       <style>{`* { box-sizing: border-box; margin: 0; outline: none; color: unset; }`}</style>
-      <body className="font-lato m-0 bg-white dark:bg-gray-900 p-0 text-black dark:text-white">
+      <body className="font-lato m-0 bg-white p-0 text-black dark:bg-gray-900 dark:text-white">
         {children}
       </body>
     </html>

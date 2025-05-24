@@ -1,0 +1,9 @@
+services:
+  # Future services can be added here
+
+volumes:
+  # Volume definitions can be added here when needed
+
+networks:
+  default:
+    driver: bridge

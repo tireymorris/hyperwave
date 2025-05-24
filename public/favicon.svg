@@ -1,0 +1,28 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="foamGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#E0F2FE;stop-opacity:0.6" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" fill="#0C4A6E" rx="6"/>
+  
+  <!-- Main wave -->
+  <path d="M0 18 C6 14, 10 22, 16 18 C22 14, 26 22, 32 18 L32 32 L0 32 Z" fill="url(#waveGradient)" opacity="0.9"/>
+  
+  <!-- Secondary wave -->
+  <path d="M0 22 C4 20, 8 24, 12 22 C16 20, 20 24, 24 22 C28 20, 30 24, 32 22 L32 32 L0 32 Z" fill="url(#waveGradient)" opacity="0.7"/>
+  
+  <!-- Wave foam/crests -->
+  <path d="M2 16 C8 12, 12 20, 18 16 C24 12, 28 20, 30 16" stroke="url(#foamGradient)" stroke-width="1.5" fill="none" opacity="0.8"/>
+  
+  <!-- Small wave details -->
+  <circle cx="8" cy="15" r="1" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="20" cy="15" r="0.8" fill="#FFFFFF" opacity="0.5"/>
+  <circle cx="26" cy="17" r="0.6" fill="#FFFFFF" opacity="0.4"/>
+</svg> 

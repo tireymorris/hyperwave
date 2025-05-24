@@ -1,0 +1,53 @@
+/* Global CSS Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  outline: none;
+  color: unset;
+}
+
+/* Input, Button, and Link Styles */
+input, button, a {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-user-select: none !important;
+  -webkit-touch-callout: none !important;
+  user-select: none !important;
+  outline: none !important;
+  outline-offset: none !important;
+}
+
+button {
+  outline: none !important;
+  outline-offset: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+button:focus {
+  outline: none !important;
+  outline-offset: none !important;
+  box-shadow: none !important;
+}
+
+button:focus-visible {
+  outline: none !important;
+  outline-offset: none !important;
+  box-shadow: none !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--un-bg-app-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--un-bg-interactive-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--un-bg-interactive-primary-hover);
+} 

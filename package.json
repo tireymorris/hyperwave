@@ -1,30 +1,87 @@
 {
   "name": "hyperwave",
-  "version": "0.2.1",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
     "build": "bun build:css && bun build --compile ./src/server.tsx",
-    "build:css": "unocss \"src/**/*.tsx\" -o public/styles/uno.css",
-    "css": "unocss --watch \"src/**/*.tsx\" -o public/styles/uno.css",
-    "db": "bun run src/db.ts",
-    "dev": "bun install && concurrently --restart-tries=3 \"bun css\" \"nodemon --watch src --ext ts,tsx --exec 'bun run --hot src/server.tsx'\"",
-    "prettier": "bunx prettier --write src/ test/ --plugin prettier-plugin-tailwindcss",
-    "server": "bun run --hot src/server.tsx",
-    "test": "bun run test",
-    "update-deps": "bunx npm-check-updates -u && bun install"
+    "build:css": "mkdir -p public/styles && unocss \"src/**/*.tsx\" -o public/styles/uno.css --config src/styles/uno.config.ts",
+    "check-updates": "bun x npm-check-updates -u && bun install",
+    "ci:local": "bun x act --container-architecture linux/amd64",
+    "ci:local:unit": "bun x act -j unit --container-architecture linux/amd64",
+    "dev": "bun run build:css && bun --hot src/server.tsx",
+    "dev:docker": "docker build -t portal-dev -f Dockerfile . && docker run -it --rm -p 3000:3000 -v $(pwd)/src:/app/src portal-dev",
+    "dev:local": "bun run dev",
+    "favicon": "bun scripts/generate-favicon.js",
+    "format:check": "bun x prettier@3.5.1 --check \"src/**/*.{ts,tsx,js,jsx,css,scss,html,md}\"",
+    "kill": "pkill -9 -f 'bun --watch src/server.tsx' || true",
+    "lint": "bun x eslint \"src/**/*.{ts,tsx}\"",
+    "precommit": "bun run typecheck && bun run format:check && bun run lint && bun run test:unit",
+    "prepare": "husky",
+    "prettier": "bun x prettier@3.5.1 --write \"src/**/*.{ts,tsx,js,jsx,css,scss,html,md}\"",
+    "server": "bun --watch src/server.tsx",
+    "setup": "./setup.sh",
+    "test:unit": "bun test",
+    "typecheck": "bun x tsc --noEmit"
   },
   "dependencies": {
-    "@unocss/preset-web-fonts": "^0.61.9",
-    "hono": "^4.7.0",
-    "nodemon": "^3.1.9",
-    "unocss": "^0.61.9",
+    "@hono/node-server": "^1.14.0",
+    "@hono/zod-validator": "^0.4.3",
+    "@linear/sdk": "^38.0.0",
+    "@types/uuid": "^10.0.0",
+    "@unocss/preset-web-fonts": "^65.5.0",
+    "canvas": "^3.1.0",
+    "hono": "^4.7.5",
+    "jose": "^5.10.0",
+    "resend": "^4.2.0",
+    "unocss": "^65.5.0",
+    "uuid": "^11.1.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@unocss/cli": "^0.61.9",
-    "bun-types": "^1.2.2",
-    "concurrently": "^8.2.2",
-    "prettier": "^3.5.0",
-    "prettier-plugin-tailwindcss": "^0.6.11"
+    "@octokit/rest": "^21.1.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^22.14.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@unocss/cli": "^65.5.0",
+    "bun-types": "^1.2.8",
+    "chalk": "^5.4.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
+    "eslint": "^8.57.1",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-jsdoc": "^50.6.9",
+    "husky": "^9.1.7",
+    "nodemon": "^3.1.9",
+    "prettier": "3.5.1",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "terser": "^5.39.0",
+    "typescript": "^5.8.3"
   },
-  "module": "src/server.tsx"
+  "module": "src/server.tsx",
+  "husky": {
+    "hooks": {
+      "pre-commit": "bun run precommit"
+    }
+  },
+  "bun": {
+    "test": {
+      "coverage": true,
+      "coverageThreshold": {
+        "global": {
+          "lines": 80,
+          "functions": 80,
+          "branches": 70,
+          "statements": 80
+        }
+      },
+      "coverageIgnorePatterns": [
+        "assets/**",
+        "__tests__/**",
+        "node_modules/**"
+      ]
+    }
+  }
 }

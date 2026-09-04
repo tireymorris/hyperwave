@@ -5,26 +5,17 @@
     "build": "bun build:css && bun build --compile ./src/server.tsx",
     "build:css": "unocss \"src/**/*.tsx\" -o public/styles/uno.css",
     "css": "unocss --watch \"src/**/*.tsx\" -o public/styles/uno.css",
-    "db": "bun run src/db.ts",
-    "dev": "bun install && concurrently --restart-tries=3 \"bun css\" \"nodemon --watch src --ext ts,tsx --exec 'bun run --hot src/server.tsx'\"",
-    "prettier": "bunx prettier --write src/ test/ --plugin prettier-plugin-tailwindcss",
-    "server": "bun run --hot src/server.tsx",
-    "test": "bun run test",
-    "update-deps": "bunx npm-check-updates -u && bun install"
+    "dev": "bun install && concurrently --restart-tries=3 \"bun css\" \"bun --hot src/server.tsx\""
   },
   "dependencies": {
     "@unocss/preset-web-fonts": "^66.10.0",
     "hono": "^4.13.7",
-    "nodemon": "^3.1.14",
-    "unocss": "^66.10.0",
-    "zod": "^4.5.4"
+    "unocss": "^66.10.0"
   },
   "devDependencies": {
     "@unocss/cli": "^66.10.0",
     "bun-types": "^1.4.1",
-    "concurrently": "^9.2.4",
-    "prettier": "^3.9.6",
-    "prettier-plugin-tailwindcss": "^0.8.1"
+    "concurrently": "^9.2.4"
   },
   "module": "src/server.tsx"
 }

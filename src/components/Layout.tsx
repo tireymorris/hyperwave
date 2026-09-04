@@ -2,7 +2,6 @@ import EnableDarkMode from "../util/EnableDarkMode";
 
 type LayoutProps = {
   title: string;
-  currentPath?: string;
   children: any;
 };
 

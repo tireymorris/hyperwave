@@ -1,7 +1,5 @@
 # hyperwave
 
-Build web apps with a simple, server-first model.
-
 Server-rendered UI, small client surface, fast feedback loops, and straightforward deploys.
 
 ## Philosophy
@@ -9,8 +7,6 @@ Server-rendered UI, small client surface, fast feedback loops, and straightforwa
 Ship HTML first.
 
 Use JavaScript only when required.
-
-Keep server boundaries explicit.
 
 Optimize for readability and small payloads.
 

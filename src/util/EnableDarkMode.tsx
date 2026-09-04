@@ -13,10 +13,7 @@ const EnableDarkMode = () => {
               }
             };
 
-            // Initial check
             updateDarkModeClass();
-
-            // Listen for changes
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateDarkModeClass);
           })();
         `,
